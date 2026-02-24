@@ -1,4 +1,4 @@
-# [在此处替换你的论文标题]
+# [Towards Fair Benchmarking of VLMs for Fine-Grained Histology Image Interpretation]
 ### (e.g., Towards Fair Benchmarking of VLMs for Fine-Grained Histology Image Interpretation)
 
 <p align="center">
