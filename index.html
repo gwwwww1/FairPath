@@ -1,106 +1,399 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PathoVLM Benchmark</title>
+    <title>FairPath-VLM | Systematic Evaluation for Pathology</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="bg-[#ffffff] text-slate-900 font-sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+    /* smooth scroll */
+    html { scroll-behavior: smooth; }
 
-    <nav class="py-6 px-10 flex justify-between items-center border-b border-gray-100 sticky top-0 bg-white z-50">
-        <div class="text-2xl font-black tracking-tighter text-indigo-900">PathoVLM🔬</div>
-        <div class="space-x-8 text-sm font-bold uppercase tracking-widest text-gray-500">
-            <a href="#overview" class="hover:text-indigo-600 transition">Overview</a>
-            <a href="#leaderboard" class="hover:text-indigo-600 transition">Performance</a>
-            <a href="#download" class="hover:text-indigo-600 transition">Resources</a>
+    /* unified global grid background */
+    .bg-grid-slate {
+        background-color: #fcfcfc;
+        background-image: radial-gradient(#e2e8f0 1.2px, transparent 1.2px);
+        background-size: 30px 30px;
+    }
+
+    /* Hover Lift Effect */
+    .hover-lift {
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hover-lift:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
+    }
+</style>
+</head>
+<body class="text-[#1e293b] font-sans relative bg-grid-slate">
+
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[35%] h-[35%] bg-indigo-100/40 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] bg-rose-100/30 rounded-full blur-[100px]"></div>
+    </div>
+
+    <nav class="py-4 px-10 flex justify-between items-center border-b border-slate-200 sticky top-0 bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="text-2xl font-black tracking-tighter text-[#0f172a] flex items-center">
+            <i class="fa-solid fa-microscope mr-2 text-indigo-600"></i>FairPath-VLM
+        </div>
+        <div class="flex items-center space-x-0">
+            <a href="#overview" class="px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition border-r border-slate-100">Overview</a>
+            <a href="#leaderboard" class="px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition border-r border-slate-100">Performance</a>
+            <a href="#download" class="px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition">Resources</a>
         </div>
     </nav>
 
-    <header class="max-w-5xl mx-auto pt-24 pb-16 px-6 text-center">
-        <h1 class="text-5xl font-extrabold mb-6 tracking-tight">面向细粒度病理 ROI 场景的<br><span class="text-indigo-600">视觉–语言基础模型系统评测</span></h1>
-        <p class="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed mb-12">
-            Systematic Evaluation and Analysis of Vision-Language Foundation Models for Fine-grained Pathological ROI Scenarios.
-        </p>
-        
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="https://github.com/gwwwww1/gwwwww1.github.io" class="flex items-center bg-black text-white px-8 py-3 rounded-full font-bold hover:bg-gray-800 transition">
-                <i class="fa-brands fa-github mr-2"></i> GitHub
-            </a>
-            <a href="#paper" class="flex items-center border border-gray-200 px-8 py-3 rounded-full font-bold hover:bg-gray-50 transition">
-                <i class="fa-solid fa-file-pdf mr-2"></i> Paper (Coming Soon)
-            </a>
-            <a href="#download" class="flex items-center bg-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:bg-indigo-700 transition shadow-lg shadow-indigo-100">
-                <i class="fa-solid fa-database mr-2"></i> Dataset Download
-            </a>
+    <header class="bg-white/70 pt-32 pb-24 px-6 text-center border-b border-slate-100">
+        <div class="inline-block px-4 py-1.5 mb-6 text-xs font-black tracking-[0.2em] text-indigo-600 bg-indigo-50 rounded-full uppercase">
+            Official Benchmark 2026
         </div>
+        <h1 class="text-7xl font-black mb-8 tracking-tight text-[#0f172a]">
+            FairPath-VLM
+        </h1>
+        <p class="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed mb-14 italic">
+            Towards Fair Benchmarking of Vision–Language Foundation Models for Fine-Grained Histology Image Interpretation and Region-of-Interest Insights.
+        </p>
+
+       <div class="flex flex-wrap justify-center gap-6">
+    <a href="#paper" class="flex items-center border-2 border-[#475569] text-[#475569] px-10 py-4 rounded-full font-bold hover:bg-[#475569] hover:text-white transition-all duration-300 shadow-sm">
+        <i class="fa-solid fa-file-pdf mr-2"></i> Paper (Coming Soon)
+    </a>
+
+    <a href="https://github.com/gwwwww1/gwwwww1.github.io" class="flex items-center bg-[#0f172a] text-white px-10 py-4 rounded-full font-bold hover:bg-[#1e293b] transition-all duration-300 shadow-xl border-2 border-[#0f172a]">
+        <i class="fa-brands fa-github mr-2"></i> GitHub
+    </a>
+
+    <a href="#download" class="flex items-center bg-[#334155] text-white px-10 py-4 rounded-full font-bold hover:bg-[#0f172a] transition-all duration-300 shadow-xl shadow-slate-200 border-2 border-[#334155]">
+        <i class="fa-solid fa-database mr-2"></i> Dataset Download
+    </a>
+</div>
     </header>
 
-    <section id="overview" class="py-20 bg-gray-50">
+ <section id="overview" class="py-24 relative overflow-hidden" style="background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);">
+
+    <div class="absolute inset-0 opacity-[0.5] pointer-events-none"
+         style="background-image: radial-gradient(#cbd5e1 1.2px, transparent 1.2px); background-size: 30px 30px;">
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+        <div class="mb-24 text-center">
+            <div class="inline-flex items-center space-x-3 mb-6">
+                <span class="h-[1px] w-8 bg-slate-200"></span>
+                <span class="text-[10px] font-black tracking-[0.4em] text-indigo-600 uppercase">Phase 01: Motivations</span>
+                <span class="h-[1px] w-8 bg-slate-200"></span>
+            </div>
+            <h2 class="text-4xl font-black text-slate-900 tracking-tight mb-16">Addressing the Evaluation Gap</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white shadow-sm flex flex-col justify-between hover:border-indigo-200 transition-colors hover:shadow-lg">
+                    <div>
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-indigo-600 mb-6 shadow-sm border border-slate-50">
+                            <i class="fa-solid fa-microscope text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Systematic ROI-Level Evaluation</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed mb-6">Current pathology foundation models lack systematic assessment at the ROI level across diverse organs and tasks.</p>
+                    </div>
+                    <div class="pt-6 border-t border-slate-200/50">
+                        <p class="text-[11px] text-slate-700 italic font-medium leading-relaxed">
+                            "The field lacks a <span class="text-indigo-600 font-bold">comprehensive, ROI-level evaluation framework</span> capable of systematically assessing model behavior across diverse pathological contexts."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white shadow-sm flex flex-col justify-between hover:border-indigo-200 transition-colors hover:shadow-lg">
+                    <div>
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-indigo-600 mb-6 shadow-sm border border-slate-50">
+                            <i class="fa-solid fa-chart-line text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Statistical Rigor & Reproducibility</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed mb-6">Performance reporting often suffers from inconsistent statistics and unstable model rankings, hindering clinical interpretability.</p>
+                    </div>
+                    <div class="pt-6 border-t border-slate-200/50">
+                        <p class="text-[11px] text-slate-700 italic font-medium leading-relaxed">
+                            "Robust and statistically rigorous evaluation is <span class="text-indigo-600 font-bold">essential</span> to ensure reliable model comparison and clinical interpretability."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-md p-8 rounded-3xl border border-white shadow-sm flex flex-col justify-between hover:border-indigo-200 transition-colors hover:shadow-lg">
+                    <div>
+                        <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-indigo-600 mb-6 shadow-sm border border-slate-50">
+                            <i class="fa-solid fa-shield-halved text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-3">Independent & Fine-grained Benchmarks</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed mb-6">Massive pre-training scales introduce significant risks of data leakage and bias from inconsistent annotation granularities.</p>
+                    </div>
+                    <div class="pt-6 border-t border-slate-200/50">
+                        <p class="text-[11px] text-slate-700 italic font-medium leading-relaxed">
+                            "Independent, fine-grained clinical cohorts are <span class="text-indigo-600 font-bold">required</span> to support trustworthy evaluation and minimize potential bias."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <div class="inline-flex items-center space-x-3 mb-6">
+                <span class="h-[1px] w-8 bg-slate-200"></span>
+                <span class="text-[10px] font-black tracking-[0.4em] text-indigo-600 uppercase">Phase 02: Solutions</span>
+                <span class="h-[1px] w-8 bg-slate-200"></span>
+            </div>
+            <h2 class="text-4xl font-black text-slate-900 tracking-tight mb-16">A Systematic ROI Benchmark</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-50/50 rounded-full -mr-12 -mt-12 transition-transform group-hover:scale-110"></div>
+                    <span class="text-indigo-600 text-[10px] font-black uppercase tracking-[0.2em] relative">Solution 01</span>
+                    <h4 class="text-slate-900 font-bold mt-2 mb-4 relative">Fine-grained ROI</h4>
+                    <p class="text-slate-500 text-[11px] leading-relaxed relative">
+                        <strong class="text-indigo-600 font-extrabold italic">Localizing</strong> feature interpretation by <strong class="text-slate-900">delineating</strong> ROI-level details to eliminate slide-level noise.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-50/50 rounded-full -mr-12 -mt-12 transition-transform group-hover:scale-110"></div>
+                    <span class="text-indigo-600 text-[10px] font-black uppercase tracking-[0.2em] relative">Solution 02</span>
+                    <h4 class="text-slate-900 font-bold mt-2 mb-4 relative">800K+ Data Scale</h4>
+                    <p class="text-slate-500 text-[11px] leading-relaxed relative">
+                        <strong class="text-indigo-600 font-extrabold italic">Expanding</strong> to 14 datasets across 12+ organ systems for <strong class="text-slate-900">achieving</strong> maximum statistical stability.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-50/50 rounded-full -mr-12 -mt-12 transition-transform group-hover:scale-110"></div>
+                    <span class="text-indigo-600 text-[10px] font-black uppercase tracking-[0.2em] relative">Solution 03</span>
+                    <h4 class="text-slate-900 font-bold mt-2 mb-4 relative">Leakage-free Cohort</h4>
+                    <p class="text-slate-500 text-[11px] leading-relaxed relative">
+                        <strong class="text-indigo-600 font-extrabold italic">Establishing</strong> pathologist-annotated pediatric sets, <strong class="text-slate-900">ensuring</strong> zero pre-training contamination.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <span class="text-indigo-600 text-[10px] font-black uppercase tracking-[0.2em]">Solution 04</span>
+                    <h4 class="text-slate-900 font-bold mt-2 mb-4">Quantifying VLMs</h4>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">
+                        <strong class="text-indigo-600 font-extrabold italic">Benchmarking</strong> 16 VLMs vs 4 Vision models to <strong class="text-slate-900">isolate</strong> the impact of textual semantics.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <span class="text-indigo-600 text-[10px] font-black uppercase tracking-[0.2em]">Solution 05</span>
+                    <h4 class="text-slate-900 font-bold mt-2 mb-4">Statistical Rigor</h4>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">
+                        <strong class="text-indigo-600 font-extrabold italic">Implementing</strong> bootstrapping and two-sided tests for <strong class="text-slate-900">verifying</strong> scientific significance.
+                    </p>
+                </div>
+
+                <div class="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <span class="text-indigo-600 text-[10px] font-black uppercase tracking-[0.2em]">Solution 06</span>
+                    <h4 class="text-slate-900 font-bold mt-2 mb-4">Robust Assessment</h4>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">
+                        <strong class="text-indigo-600 font-extrabold italic">Validating</strong> performance through stain normalization, augmentations, and <strong class="text-slate-900">optimizing</strong> prompt engineering.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <section id="leaderboard" class="py-12 bg-white">
+    <div class="w-full px-12">
+
+        <div class="text-center mb-6">
+            <div class="inline-flex items-center justify-center space-x-3 mb-2">
+                <span class="h-[1px] w-6 bg-slate-200"></span>
+                <span class="text-[9px] font-black tracking-[0.4em] text-indigo-600 uppercase">Methodology & Results</span>
+                <span class="h-[1px] w-6 bg-slate-200"></span>
+            </div>
+            <h2 class="text-3xl font-black text-slate-900 tracking-tight">Integrated Evaluation Framework & Task-Specific Visualizations</h2>
+        </div>
+
+        <div class="relative min-h-[650px] w-full flex flex-col items-center justify-center">
+
+            <button onclick="changeSlide(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-30 p-4 text-slate-200 hover:text-indigo-600 transition-all">
+                <i class="fa-solid fa-chevron-left text-4xl"></i>
+            </button>
+            <button onclick="changeSlide(1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-30 p-4 text-slate-200 hover:text-indigo-600 transition-all">
+                <i class="fa-solid fa-chevron-right text-4xl"></i>
+            </button>
+
+            <div id="performance-carousel" class="relative h-[650px] w-full flex items-center justify-center bg-white">
+                <div class="fade-slide active"><img src="image/case1.png" class="main-img" alt="Case 1"></div>
+                <div class="fade-slide"><img src="image/case2.png" class="main-img" alt="Case 2"></div>
+                <div class="fade-slide"><img src="image/case3.png" class="main-img" alt="Case 3"></div>
+                <div class="fade-slide"><img src="image/case4.png" class="main-img" alt="Case 4"></div>
+                <div class="fade-slide"><img src="image/case5.png" class="main-img" alt="Case 5"></div>
+                <div class="fade-slide"><img src="image/case6.png" class="main-img" alt="Case 6"></div>
+                <div class="fade-slide"><img src="image/case7.png" class="main-img" alt="Case 7"></div>
+                <div class="fade-slide"><img src="image/case8.png" class="main-img" alt="Case 8"></div>
+                <div class="fade-slide"><img src="image/case9.png" class="main-img" alt="Case 9"></div>
+                <div class="fade-slide"><img src="image/case10.png" class="main-img" alt="Case 10"></div>
+                <div class="fade-slide"><img src="image/case11.png" class="main-img" alt="Case 11"></div>
+            </div>
+
+            <div id="dynamic-legend" class="mt-6 px-6 py-3 bg-slate-50/80 rounded-2xl border border-slate-100 min-w-[400px] text-center">
+                <p id="legend-text" class="text-[11px] font-bold text-slate-500 uppercase tracking-[0.15em]">
+                    Loading framework details...
+                </p>
+            </div>
+
+            <div class="w-full max-w-6xl mt-6 flex items-center justify-between border-t border-slate-100 pt-5">
+                <div id="dot-nav" class="flex space-x-3"></div>
+                <div class="font-mono text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase">
+                    Module <span id="current-num" class="text-indigo-600 text-sm ml-1">01</span> / 11
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <script>
+    (function() {
+        let currentIndex = 0;
+        const slides = document.querySelectorAll(".fade-slide");
+        const dotNav = document.getElementById("dot-nav");
+        const currentNum = document.getElementById("current-num");
+        const legendText = document.getElementById("legend-text");
+
+        // 【这里修改每张图对应的图例文字】
+        const legends = [
+            "Results of image enhancement and stain normalization under few-shot and full-sample settings",
+            "Systematic evaluation of prompt and class label design in zero-shot pathology classification",
+            "Clinically grounded evaluation tasks and evaluated foundation models",
+            "Comprehensive evaluation on the pediatric pathology dataset",
+            "Evaluation framework for pathology foundation models",
+            "Supervised evaluation and performance scaling of pathology foundation models",
+            "Image-to-image retrieval benchmarking across pathology datasets",
+            "Curation workflow and composition of the pediatric pathology dataset",
+            "Supplementary experiments on Zero-shot and linear-probing performance across datasets",
+            "Comprehensive evaluation of pathology foundation models across classification and ranking metrics",
+            "Cross-modal retrieval benchmarking across multiple pathology datasets"
+        ];
+
+        // 初始化导航
+        slides.forEach((_, i) => {
+            const dot = document.createElement("div");
+            dot.className = `nav-dot ${i === 0 ? 'active' : ''}`;
+            dot.onclick = () => goToSlide(i);
+            dotNav.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll(".nav-dot");
+
+        function updateUI(n) {
+            slides[currentIndex].classList.remove("active");
+            dots[currentIndex].classList.remove("active");
+
+            currentIndex = n;
+
+            slides[currentIndex].classList.add("active");
+            dots[currentIndex].classList.add("active");
+            currentNum.innerText = (currentIndex + 1).toString().padStart(2, '0');
+            // 更新图例文字
+            legendText.innerText = legends[currentIndex];
+        }
+
+        window.changeSlide = (n) => {
+            let next = (currentIndex + n + slides.length) % slides.length;
+            updateUI(next);
+        };
+
+        function goToSlide(n) {
+            updateUI(n);
+        }
+
+        // 初始更新一次
+        updateUI(0);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowLeft") changeSlide(-1);
+            if (e.key === "ArrowRight") changeSlide(1);
+        });
+    })();
+</script>
+
+ <style>
+    .main-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .fade-slide { display: none; position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s ease; align-items: center; justify-content: center; }
+    .fade-slide.active { display: flex; opacity: 1; z-index: 20; }
+    .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: #f1f5f9; border: 1px solid #e2e8f0; cursor: pointer; }
+    .nav-dot.active { background: #4f46e5; transform: scale(1.2); }
+</style>
+<!--    performance-->
+
+ <section id="download" class="py-32 bg-[#0a0f1a] text-white">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold">系统化评测流程 (Overview)</h2>
-                <div class="h-1 w-20 bg-indigo-600 mx-auto mt-4"></div>
+            <div class="text-center mb-20">
+                <div class="inline-block px-4 py-1.5 mb-6 text-xs font-black tracking-[0.2em] text-indigo-600 bg-indigo-50 rounded-full uppercase">
+           Data & Resources
             </div>
-            <div class="bg-white p-4 rounded-3xl shadow-xl border border-gray-100">
-                <img src="./images/framework.png" alt="System Framework" class="w-full h-auto rounded-2xl">
+                <h2 class="text-4xl font-extrabold mb-6 tracking-tight">Access the Benchmark</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                    We provide a dual-resource repository consisting of our novel pediatric series and a curated public benchmark set.
+                </p>
             </div>
-            <p class="mt-8 text-center text-gray-500 max-w-2xl mx-auto italic">
-                图注：展示从细粒度 ROI 提取、视觉-语言对齐评估到多维度指标统计的完整实施方案。
-            </p>
-        </div>
-    </section>
 
-    <section id="leaderboard" class="max-w-5xl mx-auto py-24 px-6">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold">模型性能表现 (Performance)</h2>
-        </div>
-        <div class="overflow-hidden rounded-2xl border border-gray-100 shadow-sm">
-            <table class="w-full text-left">
-                <thead class="bg-gray-50 border-b border-gray-100">
-                    <tr>
-                        <th class="px-8 py-5 font-bold text-gray-700">Model</th>
-                        <th class="px-8 py-5 font-bold text-gray-700 text-center">Zero-shot Acc</th>
-                        <th class="px-8 py-5 font-bold text-gray-700 text-center">F1-Score</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-50">
-                    <tr class="hover:bg-indigo-50/30 transition">
-                        <td class="px-8 py-5 font-bold">PathoVLM (Ours)</td>
-                        <td class="px-8 py-5 text-center text-indigo-600 font-mono">0.892</td>
-                        <td class="px-8 py-5 text-center text-indigo-600 font-mono">0.854</td>
-                    </tr>
-                    <tr class="text-gray-400">
-                        <td class="px-8 py-5">Baseline VLM</td>
-                        <td class="px-8 py-5 text-center font-mono">0.821</td>
-                        <td class="px-8 py-5 text-center font-mono">0.795</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-    <section id="download" class="py-24 bg-slate-900 text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-8">数据集获取 (Resources)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                <div class="p-8 rounded-2xl bg-slate-800 border border-slate-700">
-                    <h3 class="font-bold text-xl mb-4">Fine-grained ROI Set</h3>
-                    <p class="text-slate-400 mb-6 text-sm text-left">包含肿瘤、血管、间质等细粒度病理标注数据，支持多种放大倍率分析。</p>
-                    <a href="#" class="text-indigo-400 font-bold hover:underline">Download Images (5.2GB) →</a>
+                <div class="relative p-10 rounded-[2.5rem] bg-[#161b26] border border-blue-500/30 shadow-[0_0_40px_rgba(59,130,246,0.1)] group transition-all duration-500 hover:border-blue-400">
+                    <div class="absolute -top-4 -right-2 bg-blue-600 text-[10px] font-black px-4 py-1.5 rounded-full shadow-lg uppercase tracking-widest italic">
+                        Exclusive Release
+                    </div>
+
+                    <h3 class="font-bold text-2xl mb-6 text-white flex items-center">
+                        <i class="fa-solid fa-star text-yellow-500 mr-3"></i>Pediatric Histology Series
+                    </h3>
+
+                    <p class="text-slate-400 mb-8 text-sm leading-relaxed">
+                        A novel set of <strong>5 specialized pediatric datasets</strong> specifically curated for this study, including high-resolution raw images and expert original annotations.
+                    </p>
+
+                    <ul class="space-y-4 mb-10 text-xs text-slate-500">
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i>5 Specialized Pediatric Organ Sets</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i>High-resolution Raw Pathological Images</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i>Expert Ground-truth Annotations</li>
+                    </ul>
+
+                    <a href="#" class="w-full bg-blue-600 text-white px-8 py-4 rounded-full font-black flex items-center justify-center hover:bg-blue-500 transition-all shadow-xl shadow-blue-900/20">
+                        Download Pediatric Series (New) <i class="fa-solid fa-download ml-3"></i>
+                    </a>
                 </div>
-                <div class="p-8 rounded-2xl bg-slate-800 border border-slate-700">
-                    <h3 class="font-bold text-xl mb-4">Evaluation Labels</h3>
-                    <p class="text-slate-400 mb-6 text-sm text-left">标准化的文本描述对与分类标签，采用 JSON 格式存储。</p>
-                    <a href="#" class="text-indigo-400 font-bold hover:underline">Download Annotations (12MB) →</a>
+
+                <div class="p-10 rounded-[2.5rem] bg-[#161b26] border border-slate-800 group transition-all duration-500 hover:border-slate-600 shadow-sm">
+                    <h3 class="font-bold text-2xl mb-6 text-white flex items-center">
+                        <i class="fa-solid fa-globe text-slate-500 mr-3"></i>Public Benchmark Set
+                    </h3>
+
+                    <p class="text-slate-400 mb-8 text-sm leading-relaxed">
+                        A comprehensive collection of <strong>14 established public datasets</strong> (PCam, NCT-CRC, ARCH, etc.) covering adult cancer types and diagnostic tasks.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 mb-10">
+                        <div class="bg-[#0a0f1a] p-5 rounded-2xl border border-slate-800/50">
+                            <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1 text-center">Scale</div>
+                            <div class="text-xl font-bold text-white text-center">800K+</div>
+                        </div>
+                        <div class="bg-[#0a0f1a] p-5 rounded-2xl border border-slate-800/50">
+                            <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1 text-center">Domains</div>
+                            <div class="text-xl font-bold text-white text-center">14 Pubs</div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="w-full border-2 border-slate-700 text-slate-300 px-8 py-4 rounded-full font-black flex items-center justify-center hover:bg-slate-700 hover:text-white transition-all">
+                        Download Public Collection <i class="fa-solid fa-arrow-right ml-3"></i>
+                    </a>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <footer class="py-12 text-center text-gray-400 text-sm border-t border-gray-50">
-        <p>© 2026 PathoVLM Project. Academic Non-Commercial Use Only.</p>
+ <footer class="py-16 text-center text-slate-400 text-[10px] font-black tracking-[0.4em] uppercase bg-white border-t border-slate-100">
+        © 2026 FairPath-VLM Project. Academic Non-Commercial Use Only.
     </footer>
 
 </body>
