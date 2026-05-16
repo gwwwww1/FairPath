@@ -35,17 +35,17 @@
         <div class="absolute top-[-10%] left-[-10%] w-[35%] h-[35%] bg-indigo-100/40 rounded-full blur-[120px]"></div>
         <div class="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] bg-rose-100/30 rounded-full blur-[100px]"></div>
     </div>
-
-    <nav class="py-4 px-6 md:px-10 flex flex-col md:flex-row justify-between items-center border-b border-slate-200 sticky top-0 bg-white/90 backdrop-blur-md z-50 shadow-sm">
-        <div class="text-2xl font-black tracking-tighter text-[#0f172a] flex items-center mb-4 md:mb-0">
-            <i class="fa-solid fa-microscope mr-2 text-indigo-600"></i>FairPath
-        </div>
-        <div class="flex items-center space-x-0 overflow-x-auto w-full md:w-auto justify-center">
-            <a href="#overview" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition border-r border-slate-100">Overview</a>
-            <a href="#leaderboard" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition border-r border-slate-100">Performance</a>
-            <a href="#download" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition">Resources</a>
-        </div>
-    </nav>
+<nav class="py-4 px-6 md:px-10 flex flex-col md:flex-row justify-between items-center border-b border-slate-100 sticky top-0 bg-white/70 backdrop-blur-md z-50">
+    <div class="text-2xl font-black tracking-tighter text-[#0f172a] flex items-center mb-4 md:mb-0">
+        <i class="fa-solid fa-microscope mr-2 text-indigo-600"></i>FairPath
+    </div>
+    <div class="flex items-center space-x-1 overflow-x-auto w-full md:w-auto justify-center">
+        <a href="#overview" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100">Overview</a>
+        <a href="#leaderboard" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100">Performance</a>
+        <a href="#view-dataset" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100">Datasets</a>
+        <a href="#download" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100">Resources</a>
+    </div>
+</nav>
 
     <header class="bg-white/70 pt-20 md:pt-32 pb-16 md:pb-24 px-6 text-center border-b border-slate-100">
         <div class="inline-block px-4 py-1.5 mb-6 text-xs font-black tracking-[0.2em] text-indigo-600 bg-indigo-50 rounded-full uppercase">
@@ -197,7 +197,286 @@
         </div>
     </div>
 </section>
+  <!-- ==================== VIEW DATASET SECTION START ==================== -->
+    <section id="view-dataset" class="py-6 md:py-10 bg-white border-b border-slate-100 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.3] pointer-events-none" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px;"></div>
 
+    <div class="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
+        <div class="flex flex-col lg:flex-row gap-6 items-stretch">
+
+            <div class="w-full lg:w-2/3 bg-slate-50/50 backdrop-blur-sm rounded-[2rem] border border-slate-200/60 p-5 md:p-6 flex flex-col justify-between shadow-sm">
+                <div>
+                    <div class="flex items-center justify-between gap-4 mb-4 pb-3 border-b border-slate-200/60">
+                        <div>
+                            <span id="ds-abbr" class="text-[10px] font-black text-indigo-600 tracking-widest uppercase bg-indigo-50 px-2.5 py-0.5 rounded-full">PXA</span>
+                            <h3 id="ds-title" class="text-base md:text-lg font-black text-slate-900 mt-1">Pleomorphic Xanthoastrocytoma</h3>
+                        </div>
+                        <div class="flex items-center space-x-3.5 flex-shrink-0">
+                            <div class="text-right">
+                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-wider block">Total Instances</span>
+                                <span id="ds-total" class="text-xl font-black text-slate-900 tracking-tight">19,737</span>
+                            </div>
+                            <a id="ds-download-btn" href="https://your-shared-download-link-here.com" target="_blank" class="flex items-center justify-center bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-2 rounded-lg hover:bg-indigo-700 transition-all shadow-sm hover:shadow-indigo-100 active:scale-95">
+                                <i class="fa-solid fa-download mr-1.5"></i> Download All
+                            </a>
+                        </div>
+                    </div>
+
+                    <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2.5">
+                        <i class="fa-solid fa-tags mr-1.5 text-indigo-500"></i>Histological Categories <span class="text-slate-300 font-normal">(Click rows to switch examples)</span>
+                    </h4>
+                    <div id="ds-classes-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+                        </div>
+                </div>
+
+                <div class="relative bg-slate-950 rounded-xl border border-slate-800 p-4 shadow-xl flex flex-col gap-3">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-800/60 pb-2">
+                        <div class="flex items-start space-x-2.5">
+                            <div class="w-6 h-6 bg-indigo-500/10 rounded-md border border-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-microscope text-[10px] animate-pulse"></i>
+                            </div>
+                            <div>
+                                <p class="text-white font-bold text-xs tracking-wide">
+                                    <span class="text-indigo-400 mr-1">ROI Categories:</span> <span id="ds-example-name">Loading...</span>
+                                </p>
+                                <p id="ds-img-context" class="text-slate-400 text-[10px] mt-0.5 leading-relaxed line-clamp-1">Loading profile description...</p>
+                            </div>
+                        </div>
+                        <div class="bg-indigo-950/60 text-indigo-400 px-1.5 py-0.5 rounded text-[8px] font-mono tracking-wider border border-indigo-900/40 whitespace-nowrap self-end sm:self-auto">
+                            20x / 40x Patches
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-2.5" id="ds-patches-container">
+                        </div>
+                </div>
+            </div>
+
+            <div class="w-full lg:w-1/3 flex flex-col">
+                <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-1 mb-2.5 flex items-center h-4">
+                    <i class="fa-solid fa-database mr-1.5 text-slate-400"></i>Select Dataset
+                </h4>
+                <div id="dataset-cards-container" class="flex-1 flex flex-col justify-between gap-2">
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    // 干净清晰的结构化数据，移除了冗余的各个下载链接
+    const datasetData = [
+        {
+            abbr: "PXA",
+            title: "Pleomorphic Xanthoastrocytoma",
+            total: "19,737",
+            classNum: 10,
+            featureTag: "Giant Cells / Lipidization",
+            classes: [
+                { name: "Adjacent Tissue", count: "402", desc: "Non-neoplastic brain parenchyma adjacent to the tumor border.", patches: ["example/PXA/adjacent tissue/1.png", "example/PXA/adjacent tissue/2.png", "example/PXA/adjacent tissue/3.png"] },
+                { name: "Blood Vessel", count: "495", desc: "Standard vascular structures without prominent endothelial proliferation.", patches: ["example/PXA/blood vessel/1.png", "example/PXA/blood vessel/2.png", "example/PXA/blood vessel/3.png"] },
+                { name: "Necrosis", count: "440", desc: "Areas of tissue infarction and focal necrotic debris.", patches: ["example/PXA/necrosis/1.png", "example/PXA/necrosis/2.png", "example/PXA/necrosis/3.png"] },
+                { name: "Red Cells", count: "141", desc: "Isolated extravasated erythrocytes within tissue spaces.", patches: ["example/PXA/red cells/1.png", "example/PXA/red cells/2.png", "example/PXA/red cells/3.png"] },
+                { name: "Tumor + Blood Vessel", count: "2,754", desc: "Neoplastic astrocytes clustering around hyalinized blood vessels.", patches: ["example/PXA/tumor+blood vessel/1.png", "example/PXA/tumor+blood vessel/2.png", "example/PXA/tumor+blood vessel/3.png"] },
+                { name: "Tumor + Calcification", count: "1,550", desc: "Micro-calcifications embedded within pleomorphic tumor regions.", patches: ["example/PXA/tumor+calcification/1.png", "example/PXA/tumor+calcification/2.png", "example/PXA/tumor+calcification/3.png"] },
+                { name: "Tumor + Giant Cells", count: "10,342", desc: "Classic lipidization in multinucleated giant cells typical of PXA.", patches: ["example/PXA/tumor+giant cells/1.png", "example/PXA/tumor+giant cells/2.png", "example/PXA/tumor+giant cells/3.png"] },
+                { name: "Tumor + Immune Cells", count: "473", desc: "Perivascular lymphocytic cuffs infiltrating the tumor stroma.", patches: ["example/PXA/tumor+immune cells/1.png", "example/PXA/tumor+immune cells/2.png", "example/PXA/tumor+immune cells/3.png"] },
+                { name: "Tumor + Red Cells", count: "1,963", desc: "Tumor cells interspersed with prominent micro-hemorrhages.", patches: ["example/PXA/tumor+red cells/1.png", "example/PXA/tumor+red cells/2.png", "example/PXA/tumor+red cells/3.png"] },
+                { name: "Tumor", count: "1,177", desc: "Densely packed mono-nuclear pleomorphic astrocytic cells.", patches: ["example/PXA/tumor/1.png", "example/PXA/tumor/2.png", "example/PXA/tumor/3.png"] }
+            ]
+        },
+        {
+            abbr: "SGCA",
+            title: "Subependymal Giant Cell Astrocytoma",
+            total: "42,885",
+            classNum: 10,
+            featureTag: "Periventricular / Calcified",
+            classes: [
+                { name: "Adjacent Tissue", count: "96", desc: "Periventricular subependymal layer tissues.", patches: ["example/SGCA/adjacent tissue/1.png", "example/SGCA/adjacent tissue/2.png", "example/SGCA/adjacent tissue/3.png"] },
+                { name: "Blood Vessel", count: "260", desc: "Prominent vascular channels supply within the astrocytoma cluster.", patches: ["example/SGCA/blood vessel/1.png", "example/SGCA/blood vessel/2.png", "example/SGCA/blood vessel/3.png"] },
+                { name: "Red Cells", count: "86", desc: "Clusters of erythrocytes inside focal micro-bleeding spots.", patches: ["example/SGCA/red cells/1.png", "example/SGCA/red cells/2.png", "example/SGCA/red cells/3.png"] },
+                { name: "Tumor + Blood Vessel", count: "17,643", desc: "Massive sheets of giant tumor cells surrounding heavy vascularity.", patches: ["example/SGCA/tumor+blood vessel/1.png", "example/SGCA/tumor+blood vessel/2.png", "example/SGCA/tumor+blood vessel/3.png"] },
+                { name: "Tumor + Calcification", count: "1,167", desc: "Psammoma-like or dense blocky calcification within SGCA stroma.", patches: ["example/SGCA/tumor+calcification/1.png", "example/SGCA/tumor+calcification/2.png", "example/SGCA/tumor+calcification/3.png"] },
+                { name: "Tumor + Cystic Degeneration", count: "1,168", desc: "Microcystic changes intermixed with tumor matrix.", patches: ["example/SGCA/tumor+cystic degeneration/1.png", "example/SGCA/tumor+cystic degeneration/2.png", "example/SGCA/tumor+cystic degeneration/3.png"] },
+                { name: "Tumor + Giant Cells", count: "17,583", desc: "Large sweeping fields of sweeping gemistocyte-like giant cells.", patches: ["example/SGCA/tumor+giant cells/1.png", "example/SGCA/tumor+giant cells/2.png", "example/SGCA/tumor+giant cells/3.png"] },
+                { name: "Tumor + Immune Cells", count: "17", desc: "Rare focal lymphocytic elements within the lesion.", patches: ["example/SGCA/tumor+immune cells/1.png", "example/SGCA/tumor+immune cells/2.png", "example/SGCA/tumor+immune cells/3.png"] },
+                { name: "Tumor + Red Cells", count: "4,777", desc: "Widespread red blood cell congestion between tumor sheets.", patches: ["example/SGCA/tumor+red cells/1.png", "example/SGCA/tumor+red cells/2.png", "example/SGCA/tumor+red cells/3.png"] },
+                { name: "Tumor", count: "88", desc: "Pure collections of localized large polygonal tumor cells.", patches: ["example/SGCA/tumor/1.png", "example/SGCA/tumor/2.png", "example/SGCA/tumor/3.png"] }
+            ]
+        },
+        {
+            abbr: "PA",
+            title: "Pilocytic Astrocytoma",
+            total: "7,812",
+            classNum: 8,
+            featureTag: "Rosenthal Fibers / Bipolar",
+            classes: [
+                { name: "Adjacent Tissue", count: "83", desc: "Surrounding reactive cerebellar or cerebral white matter tissue.", patches: ["example/PA/adjacent tissue/1.png", "example/PA/adjacent tissue/2.png", "example/PA/adjacent tissue/3.png"] },
+                { name: "Blood Vessel", count: "49", desc: "Glomeruloid microvascular architecture specific to pilocytic structures.", patches: ["example/PA/blood vessel/1.png", "example/PA/blood vessel/2.png", "example/PA/blood vessel/3.png"] },
+                { name: "Necrosis", count: "4", desc: "Infrequent ischemic cell changes without classic pseudopalisading.", patches: ["example/PA/necrosis/1.png", "example/PA/necrosis/2.png", "example/PA/necrosis/3.png"] },
+                { name: "Red Cells", count: "621", desc: "Extensive micro-hemorrhages creating prominent background layers.", patches: ["example/PA/red cells/1.png", "example/PA/red cells/2.png", "example/PA/red cells/3.png"] },
+                { name: "Tumor + Blood Vessel", count: "5,891", desc: "Bipolar pilocytic hair-like cells wrapping around dynamic vascular loops.", patches: ["example/PA/tumor+blood vessel/1.png", "example/PA/tumor+blood vessel/2.png", "example/PA/tumor+blood vessel/3.png"] },
+                { name: "Tumor + Cystic Degeneration", count: "135", desc: "Classic loose mucinous/myxoid background microcysts.", patches: ["example/PA/tumor+cystic degeneration/1.png", "example/PA/tumor+cystic degeneration/2.png", "example/PA/tumor+cystic degeneration/3.png"] },
+                { name: "Tumor + Red Cells", count: "264", desc: "Hair-like extensions embedded inside red cell lakes.", patches: ["example/PA/tumor+red cells/1.png", "example/PA/tumor+red cells/2.png", "example/PA/tumor+red cells/3.png"] },
+                { name: "Tumor", count: "765", desc: "Dense piloid fiber networks with abundant Rosenthal fibers.", patches: ["example/PA/tumor/1.png", "example/PA/tumor/2.png", "example/PA/tumor/3.png"] }
+            ]
+        },
+        {
+            abbr: "PMA",
+            title: "Pilomyxoid Astrocytoma",
+            total: "16,512",
+            classNum: 9,
+            featureTag: "Mucoid Matrix / Angiocentric",
+            classes: [
+                { name: "Adjacent Tissue", count: "41", desc: "Hypothalamic or chiasmatic region boundary tissue structures.", patches: ["example/PMA/adjacent tissue/1.png", "example/PMA/adjacent tissue/2.png", "example/PMA/adjacent tissue/3.png"] },
+                { name: "Blood Vessel", count: "155", desc: "Angiocentric patterns of tumor cell monomorphic arrays.", patches: ["example/PMA/blood vessel/1.png", "example/PMA/blood vessel/2.png", "example/PMA/blood vessel/3.png"] },
+                { name: "Necrosis", count: "1,283", desc: "Widespread geographical necrosis fields lacking Rosenthal fibers.", patches: ["example/PMA/necrosis/1.png", "example/PMA/necrosis/2.png", "example/PMA/necrosis/3.png"] },
+                { name: "Tumor + Blood Vessel", count: "11,298", desc: "Monomorphic piloid tumor cells radiating strictly around vessels.", patches: ["example/PMA/tumor+blood vessel/1.png", "example/PMA/tumor+blood vessel/2.png", "example/PMA/tumor+blood vessel/3.png"] },
+                { name: "Tumor + Cystic Degeneration", count: "227", desc: "Mucinous pooling cavities shifting tumor cell arrangements.", patches: ["example/PMA/tumor+cystic degeneration/1.png", "example/PMA/tumor+cystic degeneration/2.png", "example/PMA/tumor+cystic degeneration/3.png"] },
+                { name: "Tumor + Red Cells", count: "1,619", desc: "Myxoid tissue stroma filled with dense blood cells.", patches: ["example/PMA/tumor+red cells/1.png", "example/PMA/tumor+red cells/2.png", "example/PMA/tumor+red cells/3.png"] },
+                { name: "Tumor + Mucoid Degeneration", count: "1,319", desc: "Pervasive prominent myxoid/mucoid background matrix.", patches: ["example/PMA/tumor+mucoid degeneration/1.png", "example/PMA/tumor+mucoid degeneration/2.png", "example/PMA/tumor+mucoid degeneration/3.png"] },
+                { name: "Red Cells", count: "41", desc: "Focal, cleanly isolated background red blood cells.", patches: ["example/PMA/red cells/1.png", "example/PMA/red cells/2.png", "example/PMA/red cells/3.png"] },
+                { name: "Tumor", count: "529", desc: "Highly uniform, non-piloid monomorphic cell matrices.", patches: ["example/PMA/tumor/1.png", "example/PMA/tumor/2.png", "example/PMA/tumor/3.png"] }
+            ]
+        },
+        {
+            abbr: "DIA",
+            title: "Desmoplastic Infantile Astrocytoma",
+            total: "20,813",
+            classNum: 5,
+            featureTag: "Desmoplastic Stroma / Spindle",
+            classes: [
+                { name: "Adjacent Tissue", count: "8,263", desc: "Superficial cortical layers or meningeal margins attached.", patches: ["example/DIA/adjacent tissue/1.png", "example/DIA/adjacent tissue/2.png", "example/DIA/adjacent tissue/3.png"] },
+                { name: "Blood Vessel", count: "109", desc: "Fibrous blood vessel networks running within fascicles.", patches: ["example/DIA/blood vessel/1.png", "example/DIA/blood vessel/2.png", "example/DIA/blood vessel/3.png"] },
+                { name: "Tumor + Blood Vessel", count: "6,858", desc: "Spindle-shaped neoplastic astrocytes aligned with collagenous capillaries.", patches: ["example/DIA/tumor+blood vessel/1.png", "example/DIA/tumor+blood vessel/2.png", "example/DIA/tumor+blood vessel/3.png"] },
+                { name: "Tumor + Immune Cells", count: "182", desc: "Dense dynamic chronic inflammatory cell infiltrate spots.", patches: ["example/DIA/tumor+immune cells/1.png", "example/DIA/tumor+immune cells/2.png", "example/DIA/tumor+immune cells/3.png"] },
+                { name: "Tumor", count: "5,401", desc: "Abundant desmoplastic dense collagen stroma with divergent neuroepithelial cells.", patches: ["example/DIA/tumor/1.png", "example/DIA/tumor/2.png", "example/DIA/tumor/3.png"] }
+            ]
+        }
+    ];
+
+    let currentActiveIdx = 0;
+
+    const elAbbr = document.getElementById("ds-abbr");
+    const elTitle = document.getElementById("ds-title");
+    const elTotal = document.getElementById("ds-total");
+    const elGrid = document.getElementById("ds-classes-grid");
+    const elCardsContainer = document.getElementById("dataset-cards-container");
+
+    const elExName = document.getElementById("ds-example-name");
+    const elExDesc = document.getElementById("ds-img-context");
+    const elPatchesContainer = document.getElementById("ds-patches-container");
+
+    function switchDataset(idx) {
+        currentActiveIdx = idx;
+        const data = datasetData[idx];
+
+        elAbbr.innerText = data.abbr;
+        elTitle.innerText = data.title;
+        elTotal.innerText = data.total;
+
+        elGrid.innerHTML = "";
+        data.classes.forEach((cls, classIdx) => {
+            const row = document.createElement("div");
+            row.className = "ds-class-row flex items-center justify-between px-3 py-1.5 bg-white border border-slate-200/70 rounded-lg cursor-pointer transition-all duration-150 hover:border-indigo-300 hover:bg-indigo-50/10 shadow-[0_1px_2px_rgba(0,0,0,0.01)]";
+            row.setAttribute("data-class-idx", classIdx);
+            row.innerHTML = `
+                <span class="text-[10px] md:text-[11px] font-bold text-slate-700 flex items-center truncate pr-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-slate-300 mr-2 transition-colors duration-150 class-dot flex-shrink-0"></span>
+                    <span class="truncate">${cls.name}</span>
+                </span>
+                <span class="font-mono text-[9px] font-black text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200/50 flex-shrink-0 class-badge">${cls.count}</span>
+            `;
+
+            row.onclick = () => selectCategory(classIdx);
+            elGrid.appendChild(row);
+        });
+
+        selectCategory(0);
+        renderCards();
+    }
+
+    function selectCategory(classIdx) {
+        const currentClasses = datasetData[currentActiveIdx].classes;
+        const selectedClass = currentClasses[classIdx];
+
+        elExName.innerText = selectedClass.name;
+        elExDesc.innerText = selectedClass.desc;
+
+        elPatchesContainer.innerHTML = "";
+        selectedClass.patches.forEach((imgUrl, i) => {
+            const imgWrapper = document.createElement("div");
+            imgWrapper.className = "relative w-full aspect-square rounded-lg overflow-hidden border border-slate-800 bg-slate-900 group/item shadow-inner flex items-center justify-center mx-auto";
+            imgWrapper.innerHTML = `
+                <img src="${imgUrl}" class="w-full h-full object-contain transition-transform duration-300 group-hover/item:scale-105 pointer-events-none" alt="ROI Patch">
+                <div class="absolute bottom-1 right-1 bg-black/70 backdrop-blur-sm text-[7px] font-mono text-slate-400 px-1 rounded border border-white/5">
+                    #${i+1}
+                </div>
+            `;
+            elPatchesContainer.appendChild(imgWrapper);
+        });
+
+        const allRows = elGrid.querySelectorAll(".ds-class-row");
+        allRows.forEach((row, idx) => {
+            const dot = row.querySelector(".class-dot");
+            const badge = row.querySelector(".class-badge");
+
+            if (idx === classIdx) {
+                row.className = "ds-class-row flex items-center justify-between px-3 py-1.5 bg-indigo-50/30 border border-indigo-500 rounded-lg cursor-pointer transition-all duration-150 shadow-sm";
+                dot.className = "w-1.5 h-1.5 rounded-full bg-indigo-600 mr-2 class-dot flex-shrink-0";
+                badge.className = "font-mono text-[9px] font-black text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded border border-indigo-200/50 flex-shrink-0 class-badge";
+            } else {
+                row.className = "ds-class-row flex items-center justify-between px-3 py-1.5 bg-white border border-slate-200/70 rounded-lg cursor-pointer transition-all duration-150 hover:border-indigo-300 hover:bg-indigo-50/10 shadow-[0_1px_2px_rgba(0,0,0,0.01)]";
+                dot.className = "w-1.5 h-1.5 rounded-full bg-slate-300 mr-2 class-dot flex-shrink-0";
+                badge.className = "font-mono text-[9px] font-black text-slate-500 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200/50 flex-shrink-0 class-badge";
+            }
+        });
+    }
+
+    function renderCards() {
+        elCardsContainer.innerHTML = "";
+        datasetData.forEach((ds, i) => {
+            const isActive = (i === currentActiveIdx);
+            const card = document.createElement("div");
+
+            card.className = `flex-1 flex items-center justify-between p-3.5 pl-4 rounded-xl border relative transition-all duration-200 cursor-pointer overflow-hidden ${
+                isActive
+                ? 'bg-[#0f172a] border-[#0f172a] text-white shadow-md'
+                : 'bg-white border-slate-200 text-[#1e293b] hover:border-slate-400 hover:bg-slate-50'
+            }`;
+
+            card.onclick = () => switchDataset(i);
+            card.innerHTML = `
+                <div class="absolute left-0 top-0 bottom-0 w-1 ${isActive ? 'bg-indigo-500' : 'bg-transparent'}"></div>
+
+                <div class="truncate pr-2 flex flex-col justify-between h-full py-0.5">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-[10px] font-black tracking-wider uppercase ${isActive ? 'text-indigo-400' : 'text-indigo-600'}">${ds.abbr}</span>
+                        <span class="text-[8px] font-mono px-1 py-0.2 rounded border uppercase tracking-tight ${isActive ? 'border-slate-700 bg-slate-800 text-slate-300' : 'border-slate-200 bg-slate-50 text-slate-500'}">
+                            ${ds.classNum} Categories
+                        </span>
+                    </div>
+                    <div class="text-[11px] font-bold mt-1 truncate ${isActive ? 'text-slate-100' : 'text-slate-800'}">${ds.title.split(' (')[0]}</div>
+                    <div class="text-[8px] mt-1 tracking-wide font-medium truncate opacity-60 ${isActive ? 'text-indigo-300' : 'text-slate-500'}">
+                        <i class="fa-solid fa-dna text-[7px] mr-1"></i>${ds.featureTag}
+                    </div>
+                </div>
+                <div class="text-right flex-shrink-0 flex flex-col justify-center">
+                    <span class="text-[12px] font-mono font-black tracking-tight ${isActive ? 'text-white' : 'text-slate-900'}">${ds.total}</span>
+                    <span class="block text-[7px] opacity-40 uppercase font-extrabold tracking-widest mt-0.5">Patches</span>
+                </div>
+            `;
+            elCardsContainer.appendChild(card);
+        });
+    }
+
+    switchDataset(0);
+})();
+</script>
+<!-- ==================== VIEW DATASET SECTION END ==================== -->
+    
 <style>
 /* 响应式容器高度控制 */
 .carousel-container {
