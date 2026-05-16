@@ -35,15 +35,16 @@
         <div class="absolute top-[-10%] left-[-10%] w-[35%] h-[35%] bg-indigo-100/40 rounded-full blur-[120px]"></div>
         <div class="absolute bottom-[20%] right-[-5%] w-[30%] h-[30%] bg-rose-100/30 rounded-full blur-[100px]"></div>
     </div>
-<nav class="py-4 px-6 md:px-10 flex flex-col md:flex-row justify-between items-center border-b border-slate-100 sticky top-0 bg-white/70 backdrop-blur-md z-50">
-    <div class="text-2xl font-black tracking-tighter text-[#0f172a] flex items-center mb-4 md:mb-0">
-        <i class="fa-solid fa-microscope mr-2 text-indigo-600"></i>FairPath
+<nav class="py-3 md:py-4 px-4 md:px-10 flex flex-col md:flex-row justify-between items-center border-b border-slate-100 sticky top-0 bg-white/70 backdrop-blur-md z-50 shadow-sm/5">
+    <div class="text-xl md:text-2xl font-black tracking-tighter text-[#0f172a] flex items-center mb-2.5 md:mb-0 select-none">
+        <i class="fa-solid fa-microscope mr-1.5 text-indigo-600"></i>FairPath
     </div>
-    <div class="flex items-center space-x-1 overflow-x-auto w-full md:w-auto justify-center">
-        <a href="#overview" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100">Overview</a>
-        <a href="#leaderboard" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100">Performance</a>
-        <a href="#view-dataset" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100">Datasets</a>
-        <a href="#download" class="px-4 md:px-6 py-2 text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100">Resources</a>
+    
+    <div class="flex items-center justify-between md:justify-end w-full md:w-auto gap-0.5 md:gap-1 overflow-x-auto scrollbar-none">
+        <a href="#overview" class="flex-1 md:flex-initial text-center px-2 md:px-5 py-1.5 md:py-2 text-[11px] md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100 whitespace-nowrap">Overview</a>
+        <a href="#leaderboard" class="flex-1 md:flex-initial text-center px-2 md:px-5 py-1.5 md:py-2 text-[11px] md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100 whitespace-nowrap">Performance</a>
+        <a href="#view-dataset" class="flex-1 md:flex-initial text-center px-2 md:px-5 py-1.5 md:py-2 text-[11px] md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100 whitespace-nowrap">Datasets</a>
+        <a href="#download" class="flex-1 md:flex-initial text-center px-2 md:px-5 py-1.5 md:py-2 text-[11px] md:text-sm font-bold uppercase tracking-wider md:tracking-widest text-slate-500 hover:text-indigo-600 transition opacity-70 hover:opacity-100 whitespace-nowrap">Resources</a>
     </div>
 </nav>
 
@@ -198,65 +199,68 @@
     </div>
 </section>
   <!-- ==================== VIEW DATASET SECTION START ==================== -->
-    <section id="view-dataset" class="py-6 md:py-10 bg-white border-b border-slate-100 relative overflow-hidden">
+ <section id="view-dataset" class="py-4 md:py-10 bg-white border-b border-slate-100 relative overflow-hidden">
     <div class="absolute inset-0 opacity-[0.3] pointer-events-none" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px;"></div>
 
     <div class="max-w-7xl mx-auto px-4 md:px-12 relative z-10">
-        <div class="flex flex-col lg:flex-row gap-6 items-stretch">
+        <div class="flex flex-col lg:flex-row gap-5 lg:gap-6 items-stretch">
 
-            <div class="w-full lg:w-2/3 bg-slate-50/50 backdrop-blur-sm rounded-[2rem] border border-slate-200/60 p-5 md:p-6 flex flex-col justify-between shadow-sm">
+            <div class="w-full lg:w-2/3 bg-slate-50/50 backdrop-blur-sm rounded-2xl md:rounded-[2rem] border border-slate-200/60 p-4 md:p-6 flex flex-col justify-between shadow-sm order-2 lg:order-1">
                 <div>
-                    <div class="flex items-center justify-between gap-4 mb-4 pb-3 border-b border-slate-200/60">
-                        <div>
-                            <span id="ds-abbr" class="text-[10px] font-black text-indigo-600 tracking-widest uppercase bg-indigo-50 px-2.5 py-0.5 rounded-full">PXA</span>
-                            <h3 id="ds-title" class="text-base md:text-lg font-black text-slate-900 mt-1">Pleomorphic Xanthoastrocytoma</h3>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-200/60">
+                        <div class="truncate">
+                            <span id="ds-abbr" class="text-[9px] font-black text-indigo-600 tracking-widest uppercase bg-indigo-50 px-2 py-0.5 rounded-full">PXA</span>
+                            <h3 id="ds-title" class="text-base md:text-lg font-black text-slate-900 mt-1 truncate">Pleomorphic Xanthoastrocytoma</h3>
                         </div>
-                        <div class="flex items-center space-x-3.5 flex-shrink-0">
-                            <div class="text-right">
-                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-wider block">Total Instances</span>
-                                <span id="ds-total" class="text-xl font-black text-slate-900 tracking-tight">19,737</span>
+                        <div class="flex items-center justify-between sm:justify-end gap-4 flex-shrink-0 w-full sm:w-auto">
+                            <div class="text-left sm:text-right">
+                                <span class="text-[8px] font-bold text-slate-400 uppercase tracking-wider block">Total Patches</span>
+                                <span id="ds-total" class="text-lg md:text-xl font-black text-slate-900 tracking-tight">19,737</span>
                             </div>
-                            <a id="ds-download-btn" href="https://your-shared-download-link-here.com" target="_blank" class="flex items-center justify-center bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-2 rounded-lg hover:bg-indigo-700 transition-all shadow-sm hover:shadow-indigo-100 active:scale-95">
+                            <a id="ds-download-btn" href="https://your-shared-download-link-here.com" target="_blank" class="flex items-center justify-center bg-indigo-600 text-white text-[10px] font-black uppercase tracking-wider px-3 py-2 rounded-lg hover:bg-indigo-700 transition-all shadow-sm active:scale-95 flex-1 sm:flex-initial">
                                 <i class="fa-solid fa-download mr-1.5"></i> Download All
                             </a>
                         </div>
                     </div>
 
-                    <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2.5">
-                        <i class="fa-solid fa-tags mr-1.5 text-indigo-500"></i>Histological Categories <span class="text-slate-300 font-normal">(Click rows to switch examples)</span>
+                    <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 flex items-center">
+                        <i class="fa-solid fa-tags mr-1.5 text-indigo-500"></i>Histological Categories
+                        <span class="text-slate-300 font-normal ml-1 hidden sm:inline">(Click rows to switch examples)</span>
                     </h4>
-                    <div id="ds-classes-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+                    <div id="ds-classes-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 md:gap-2 mb-4">
                         </div>
                 </div>
 
-                <div class="relative bg-slate-950 rounded-xl border border-slate-800 p-4 shadow-xl flex flex-col gap-3">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-800/60 pb-2">
-                        <div class="flex items-start space-x-2.5">
-                            <div class="w-6 h-6 bg-indigo-500/10 rounded-md border border-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <i class="fa-solid fa-microscope text-[10px] animate-pulse"></i>
+                <div class="relative bg-slate-950 rounded-xl border border-slate-800 p-3 md:p-4 shadow-xl flex flex-col gap-3">
+                    <div class="flex items-center justify-between gap-2 border-b border-slate-800/60 pb-2">
+                        <div class="flex items-start space-x-2 truncate">
+                            <div class="w-5 h-5 bg-indigo-500/10 rounded border border-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-microscope text-[9px] animate-pulse"></i>
                             </div>
-                            <div>
-                                <p class="text-white font-bold text-xs tracking-wide">
-                                    <span class="text-indigo-400 mr-1">ROI Categories:</span> <span id="ds-example-name">Loading...</span>
+                            <div class="truncate">
+                                <p class="text-white font-bold text-[11px] tracking-wide truncate">
+                                    <span class="text-indigo-400 mr-1">ROI Category:</span><span id="ds-example-name">Loading...</span>
                                 </p>
-                                <p id="ds-img-context" class="text-slate-400 text-[10px] mt-0.5 leading-relaxed line-clamp-1">Loading profile description...</p>
+                                <p id="ds-img-context" class="text-slate-400 text-[9px] mt-0.5 leading-relaxed line-clamp-1">Loading profile description...</p>
                             </div>
                         </div>
-                        <div class="bg-indigo-950/60 text-indigo-400 px-1.5 py-0.5 rounded text-[8px] font-mono tracking-wider border border-indigo-900/40 whitespace-nowrap self-end sm:self-auto">
-                            20x / 40x Patches
+                        <div class="bg-indigo-950/60 text-indigo-400 px-1.5 py-0.5 rounded text-[8px] font-mono tracking-wider border border-indigo-900/40 whitespace-nowrap">
+                            20x / 40x
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-2.5" id="ds-patches-container">
+                    <div class="grid grid-cols-3 gap-2 md:gap-2.5" id="ds-patches-container">
                         </div>
                 </div>
             </div>
 
-            <div class="w-full lg:w-1/3 flex flex-col">
-                <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-1 mb-2.5 flex items-center h-4">
+            <div class="w-full lg:w-1/3 flex flex-col order-1 lg:order-2">
+                <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest pl-1 mb-2 flex items-center h-4">
                     <i class="fa-solid fa-database mr-1.5 text-slate-400"></i>Select Dataset
+                    <span class="text-slate-300 font-normal ml-1 lg:hidden">(Swipe horizontally)</span>
                 </h4>
-                <div id="dataset-cards-container" class="flex-1 flex flex-col justify-between gap-2">
+
+                <div id="dataset-cards-container" class="flex flex-row lg:flex-col overflow-x-auto lg:overflow-x-visible gap-2 pb-3 lg:pb-0 flex-1 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none]">
                     </div>
             </div>
 
@@ -266,7 +270,6 @@
 
 <script>
 (function() {
-    // 干净清晰的结构化数据，移除了冗余的各个下载链接
     const datasetData = [
         {
             abbr: "PXA",
@@ -410,7 +413,7 @@
             const imgWrapper = document.createElement("div");
             imgWrapper.className = "relative w-full aspect-square rounded-lg overflow-hidden border border-slate-800 bg-slate-900 group/item shadow-inner flex items-center justify-center mx-auto";
             imgWrapper.innerHTML = `
-                <img src="${imgUrl}" class="w-full h-full object-contain transition-transform duration-300 group-hover/item:scale-105 pointer-events-none" alt="ROI Patch">
+                <img src="${imgUrl}" class="w-full h-full object-contain transition-transform duration-300 group-hover/item:scale-105 pointer-events-none" alt="ROI Patch" onerror="this.src='https://placehold.co/224x224/0f172a/6366f1?text=ROI+Patch'">
                 <div class="absolute bottom-1 right-1 bg-black/70 backdrop-blur-sm text-[7px] font-mono text-slate-400 px-1 rounded border border-white/5">
                     #${i+1}
                 </div>
@@ -441,7 +444,8 @@
             const isActive = (i === currentActiveIdx);
             const card = document.createElement("div");
 
-            card.className = `flex-1 flex items-center justify-between p-3.5 pl-4 rounded-xl border relative transition-all duration-200 cursor-pointer overflow-hidden ${
+            // 【核心移动端自适应】：在小屏赋予 flex-shrink-0 和固定 min-width 从而支持横向滚动，在 lg 分辨率下完美拉伸等分对齐
+            card.className = `flex-shrink-0 lg:flex-1 w-[250px] sm:w-[280px] lg:w-full flex items-center justify-between p-3 pl-4 rounded-xl border relative transition-all duration-200 cursor-pointer overflow-hidden ${
                 isActive
                 ? 'bg-[#0f172a] border-[#0f172a] text-white shadow-md'
                 : 'bg-white border-slate-200 text-[#1e293b] hover:border-slate-400 hover:bg-slate-50'
@@ -451,11 +455,11 @@
             card.innerHTML = `
                 <div class="absolute left-0 top-0 bottom-0 w-1 ${isActive ? 'bg-indigo-500' : 'bg-transparent'}"></div>
 
-                <div class="truncate pr-2 flex flex-col justify-between h-full py-0.5">
+                <div class="truncate pr-2 flex flex-col justify-between h-full py-0.5 text-left">
                     <div class="flex items-center space-x-2">
                         <span class="text-[10px] font-black tracking-wider uppercase ${isActive ? 'text-indigo-400' : 'text-indigo-600'}">${ds.abbr}</span>
                         <span class="text-[8px] font-mono px-1 py-0.2 rounded border uppercase tracking-tight ${isActive ? 'border-slate-700 bg-slate-800 text-slate-300' : 'border-slate-200 bg-slate-50 text-slate-500'}">
-                            ${ds.classNum} Categories
+                            ${ds.classNum} Classes
                         </span>
                     </div>
                     <div class="text-[11px] font-bold mt-1 truncate ${isActive ? 'text-slate-100' : 'text-slate-800'}">${ds.title.split(' (')[0]}</div>
